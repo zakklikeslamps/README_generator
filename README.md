@@ -1,2 +1,2 @@
 # README_generator
-A command-line application that generates a README.md file based on user input. 
+A command-line application that uses NODE.js to generate a README.md file based on user input. 
