@@ -1,7 +1,7 @@
 // packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const genFile = require('./utils/generateMarkdown');
+//const genFile = require('./utils/generateMarkdown');
 
 // array of questions for user input
 const questions = [];
@@ -9,7 +9,7 @@ const questions = [];
 // function to write README file
 function writeToFile(fileName, data) {}
 
-// function to initialize app
+// function to initialize README file
 function init() {
     //project name
     //description
