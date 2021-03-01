@@ -6,24 +6,22 @@ const fs = require('fs');
 // array of questions for user input
 const questions = [];
 
+//License variable
+let licenseText = "";
 // function to write README file
-function writeToFile(fileName, data) {}
-
-// function to initialize README file
-function init() {
-    //project name
-    //description
-    //installation process
-    //usage info
-    //contribution guide
-    //test instructions
-    //license 
-    //github username
-    //email 
+function writeFile(fileName, data) {
+    fs.writeFileSync(path.join(process.cwd(), fileName), data)
 }
 
+// function to initialize README file
+function init() {inquirer.prompt(questions).then((answers) => {
+    console.log(' Your README is ready.');
+    var readMe = writeFile(answers);
+    writeFile("README.md", readMe)
+})
+
 const baseTemplate = fs.readFileSync("./utils/baseTemplate.txt", "utf8");
-const readmeSections = baseTemplate.split("~");
+const sections = baseTemplate.split("~");
 
 inquirer.prompt([
     {
@@ -66,37 +64,40 @@ inquirer.prompt([
         type: "list",
         name: "license",
         message: "What license does this application back?",
-        choices: ['MIT', 'APACHE 2.0', 'GNU GPLv3', 'GNU AGPLv3', 'Mozilla Public License 2.0', 'Boost Software License 1.0', 'None']
+        choices: ['MIT', 'APACHE 2.0', 'Boost']
     }
 ])
 
 .then((response) => {
-    let readmeText = "";
-    readmeText += readmeSections[0].replace("[projectName]", response.projectName);
-    readmeText += readmeSections[1].replace("[description]", response.description);
-    readmeText += readmeSections[2].replace("[installationProcess]", response.installationProcess);
-    readmeText += readmeSections[3].replace("[usageInfo]", response.usageInfo);
-    readmeText += readmeSections[4].replace("[contributionGuide]", response.contributionGuide);
-    readmeText += readmeSections[5].replace("[testInstructions]", response.testInstructions);
+    let readmeTxt = "";
+    readmeTxt += sections[0].replace("[projectName]", response.projectName);
+    readmeTxt += sections[1].replace("[description]", response.description);
+    readmeTxt += sections[2].replace("[installationProcess]", response.installationProcess);
+    readmeTxt += sections[3].replace("[usageInfo]", response.usageInfo);
+    readmeTxt += sections[4].replace("[contributionGuide]", response.contributionGuide);
+    readmeTxt += sections[5].replace("[testInstructions]", response.testInstructions);
 
-    const license = readmeSections[6].replace("[license]", response.license);
-    let licenseText = "";
+    
+    readmeTxt += sections[6].replace("[license]", response.licenseTxt);
+    const license = sections[6].replace("[license]", response.license);
+    
         if (license === "MIT") {
-            licenseText = fs.readFileSync("./utils/MIT-license.txt", "utf8");
-        } else {
-            licenseText = fs.readFileSync("./utils/boostLicense.txt", "utf8");
-        }
+            licenseTxt = fs.readFileSync("./utils/MIT-license.txt", "utf8");
+        } else if (license === "Boost") {
+            licenseTxt = fs.readFileSync("./utils/boostlicense.txt", "utf8");
+        } else license === "Apache 2.0"
+            licenseTxt = fs.readFileSync("./utils/apachelicesnse.txt", "utf8");
 
-    readmeText += readmeSections[6].replace("[license]", response.licenseText);
-    readmeText += readmeSections[7].replace("[gitHubUserName]", response.githubUsername);
-    readmeText += readmeSections[8].replace("[email]", response.email);
+    readmeTxt += sections[7].replace("[gitHubUserName]", response.githubUsername);
+    readmeTxt += sections[8].replace("[email]", response.email);
 
-    readmeText = readmeText.replace("~", "");
+    readmeTxt = readmeTxt.replace("~", "");
 
     // output test
     console.log(readmeText);
         
 });
+
 
 
 
