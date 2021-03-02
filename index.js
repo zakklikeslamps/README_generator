@@ -1,51 +1,51 @@
 // packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-//const genFile = require('./utils/generateMarkdown');
+const createFile = require('./utils/generateMarkdown');
 
 // array of questions for user input
-const questions = [];
-
-//License variable
-let licenseText = "";
-// function to write README file
-function writeFile(fileName, data) {
-    fs.writeFileSync(path.join(process.cwd(), fileName), data)
-}
-
-// function to initialize README file
-function init() {inquirer.prompt(questions).then((answers) => {
-    console.log(' Your README is ready.');
-    var readMe = writeFile(answers);
-    writeFile("README.md", readMe)
-})
-
-const baseTemplate = fs.readFileSync("./utils/baseTemplate.txt", "utf8");
-const sections = baseTemplate.split("~");
-
-inquirer.prompt([
+const questions = [
     {
         type: "input",
         name: "github",
-        message: "What is your Github username?"
+        message: "What is your Github username?",
+        validate: function(answers) {
+            if (answers.length < 1) {
+                return console.log("Please enter a valid Github username.")
+            }
+            return true;
+        }
     },
 
     {
         type: "input",
         name: "email",
-        message: "What is your email?"
+        message: "What is your email?",
+        validate: function(answers) {
+            if (answers.length < 1) {
+                return console.log("Please enter your registered email.")
+            }
+            return true;
+        }
     },
 
     {
         type: "input",
         name: "project",
-        message: "What is the name of this project?"
+        message: "What is the name of this project?",
+        validate: function(answers) {
+            if (answers.length < 1) {
+                return console.log("Please enter a project name.")
+            }
+            return true;
+        }
     },
 
     {
         type: "input",
         name: "description",
         message: "Please give a short description of this project."
+       
     },
 
     {
@@ -58,14 +58,42 @@ inquirer.prompt([
         type: "input",
         name: "usage",
         message: "Please provide instructions on how to use this application."
+       
     },
 
     {
         type: "list",
         name: "license",
         message: "What license does this application back?",
-        choices: ['MIT', 'APACHE 2.0', 'Boost']
+        choices: ['MIT', 'APACHE', 'Boost']
     }
+];
+
+//License variable
+/*let licenseText = "";
+// function to write README file
+function writeFile(fileName, data) {
+    fs.writeFileSync(path.join(process.cwd(), fileName), data)
+}*/
+
+// function to initialize README file
+function init() {
+    inquirer.prompt([...questions]).then((answers) => {
+    try {const README = createFile(answers);
+    fs.writeFileSync('README.md', README);
+    console.log('Your README.md is ready!')
+    }
+    catch (err) {
+        console.log(err);
+    }
+   
+    })
+}
+/*const baseTemplate = fs.readFileSync("./utils/baseTemplate.txt", "utf8");
+const sections = baseTemplate.split("~");
+
+inquirer.prompt([
+    
 ])
 
 .then((response) => {
@@ -97,11 +125,7 @@ inquirer.prompt([
     console.log(readmeText);
         
 });
-
-
-
-
-
+*/
 
 // Function call to initialize app
-init();
+init ();
