@@ -59,20 +59,20 @@ function generateMarkdown(answers) {
   
   ## Contents
   
+  *[Project Name](#project)
   *[Description](#description)
   *[Github](#github)
   *[Email](#email)
-  *[Project Name](#project)
   *[Installation](#installation)
   *[Usage](#usage)
   *[License](#license)
   *[Questions](#questions)
 
-  ##Description
-  ${answers.description}
-
   ## Project Name
   ${answers.project}
+
+  ##Description
+  ${answers.description}
 
   ## Installation 
   Please install the necessary dependencies by running the following comand:

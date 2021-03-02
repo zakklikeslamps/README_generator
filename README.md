@@ -3,28 +3,28 @@
   
   ## Contents
   
+  *[Project Name](#project)
   *[Description](#description)
   *[Github](#github)
   *[Email](#email)
-  *[Project Name](#project)
   *[Installation](#installation)
   *[Usage](#usage)
   *[License](#license)
   *[Questions](#questions)
 
-  ##Description
-  zakk
-
   ## Project Name
-  zakk
+  Good README Generator
+
+  ##Description
+  Creates a README.md file via node.js based on user input. 
 
   ## Installation 
   Please install the necessary dependencies by running the following comand:
 
-  zakk
+  You will need to install inquirer for this to work; from the CL run "npm i"
 
   ## Usage 
-  zakk
+  Navigate to the desired directory/file from the CL, then run (on mac) node index.js or (on windows) bash
 
   ## License
   ![badge](https://img.shields.io/badge/license-MIT-blueviolet)
@@ -32,10 +32,10 @@
 
 
   ## Github Username
-  zakk
+  zakklikeslamps
 
   ## Email 
-  zakk
+  zakklikeslamps@gmail.com
 
   Please email or DM me on Github with any questions.
 
