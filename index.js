@@ -4,7 +4,8 @@ const fs = require('fs');
 const createFile = require('./utils/generateMarkdown');
 
 // array of questions for user input
-const questions = [
+const questions = () =>
+    inquirer.prompt([
     {
         type: "input",
         name: "github",
@@ -67,7 +68,7 @@ const questions = [
         message: "What license does this application back?",
         choices: ['MIT', 'APACHE', 'Boost']
     }
-];
+]);
 
 //License variable
 /*let licenseText = "";
@@ -78,7 +79,7 @@ function writeFile(fileName, data) {
 
 // function to initialize README file
 function init() {
-    inquirer.prompt([...questions]).then((answers) => {
+    questions().then((answers) => {
     try {const README = createFile(answers);
     fs.writeFileSync('README.md', README);
     console.log('Your README.md is ready!')
