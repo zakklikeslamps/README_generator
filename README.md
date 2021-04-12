@@ -13,18 +13,18 @@
   *[Questions](#questions)
 
   ## Project Name
-  fjklasdjfla;
+  README Generator
 
   ##Description
-  djfklas;djf;al
+  Generates a README.md file based on user input from the command line.
 
   ## Installation 
   Please install the necessary dependencies by running the following comand:
 
-  jdfklas;djf;a
+  npm i
 
   ## Usage 
-  fjkaldsjfkal;ds
+  Clone repo from github/ Open command line & navigate to file locally/run npm i to install dependencies/ run node index.js or npm start to initiate
 
   ## License
   ![badge](https://img.shields.io/badge/license-MIT-blueviolet)
@@ -32,10 +32,10 @@
 
 
   ## Github Username
-  dfadfjadkfl;a
+  zakklikeslamps
 
   ## Email 
-  jfkladjfka;l
+  zakklikeslamps@gmail.com
 
   Please email or DM me on Github with any questions.
 
